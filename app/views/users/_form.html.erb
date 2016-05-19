@@ -1,0 +1,48 @@
+<%= form_for@user, html: { multipart: true } do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag :name %><br>
+    <%= text_field_tag :name %>
+  </div>
+
+  <div class="field">
+    Foto: <%= file_field_tag :photos  %>
+  </div>
+  <div class="field">
+    <%= label_tag :phone %><br>
+    <%= text_field_tag :phone %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :email %><br>
+    <%= text_field_tag :email %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %><br>
+    <%= password_field_tag :password %>
+  </div>
+  <div class="field">
+    <%= label_tag :password_confirmation %><br>
+    <%= password_field_tag :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= label_tag :location_id %><br>
+
+    <%= select_tag "location_id", options_from_collection_for_select(@locations, "id", "name") %>
+
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
