@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @animal.type %>
+  <strong>Breed:</strong>
+  <%= @animal.breed %>
 </p>
 
 <p>
@@ -17,12 +17,12 @@
 
 <p>
   <strong>Photo:</strong>
-  <%= @animal.photo %>
+  <%= image_tag @animal.photos.url(:mini) %>
 </p>
 
 <p>
   <strong>Locations:</strong>
-  <%= @animal.Locations %>
+  <%= @animal.location.name %>
 </p>
 
 <%= link_to 'Edit', edit_animal_path(@animal) %> |

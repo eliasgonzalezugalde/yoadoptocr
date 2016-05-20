@@ -14,6 +14,7 @@ class AnimalsController < ApplicationController
 
   # GET /animals/new
   def new
+    @locations = Location.all
     @animal = Animal.new
   end
 
@@ -69,6 +70,6 @@ class AnimalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def animal_params
-      params.require(:animal).permit(:title, :type, :description, :photo, :Locations_id)
+      params.permit(:title, :breed, :description, :photos, :location_id)
     end
 end

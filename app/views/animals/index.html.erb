@@ -6,10 +6,10 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Type</th>
+      <th>Breed</th>
       <th>Description</th>
       <th>Photo</th>
-      <th>Locations</th>
+      <th>Location</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,10 +18,10 @@
     <% @animals.each do |animal| %>
       <tr>
         <td><%= animal.title %></td>
-        <td><%= animal.type %></td>
+        <td><%= animal.breed %></td>
         <td><%= animal.description %></td>
         <td><%= animal.photo %></td>
-        <td><%= animal.Locations %></td>
+        <td><%= animal.location.name %></td>
         <td><%= link_to 'Show', animal %></td>
         <td><%= link_to 'Edit', edit_animal_path(animal) %></td>
         <td><%= link_to 'Destroy', animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
