@@ -14,7 +14,6 @@ class AnimalsController < ApplicationController
 
   # GET /animals/new
   def new
-    @locations = Location.all
     @animal = Animal.new
   end
 

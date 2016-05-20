@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :locations
 
   match '/login', to: 'users#login', via: 'get'
+  match '/validate', to: 'users#validate', via: 'post'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

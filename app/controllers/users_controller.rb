@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :validate_user, only: [:login, :validate]
 
   # GET /users
   # GET /users.json
@@ -14,7 +15,6 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @locations = Location.all
     @user = User.new
   end
 
@@ -63,25 +63,41 @@ class UsersController < ApplicationController
   end
 
   def login
-
+    if defined?(session[:logueado]) and session[:logueado]
+  redirect_to "/animals"
+    end
   end
 
   def validate
+    if    user = User.find_by(email: params[:email])
+      if user && user.authenticate(params[:password])
+
+        session[:logueado] = true
+        session[:user_id] = user.id
+        redirect_to "/animals"
+      else
+        #  aqui va si falla la autenticacion
+      end
+    else
+      #  aqui va cuando no encuentra nada con ese emil
+    end
 
   end
 
   def logout
-
+    session[:logueado] = false
+    session[:name] = nil
+    session[:email] = nil
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.permit(:name, :phone, :photos, :email, :password, :password_confirmation, :location_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.permit(:name, :phone, :photos, :email, :password, :password_confirmation, :location_id)
+  end
 end
