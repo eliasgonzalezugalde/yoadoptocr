@@ -77,9 +77,11 @@ class UsersController < ApplicationController
         redirect_to "/animals"
       else
         #  aqui va si falla la autenticacion
+        redirect_to "/login"
       end
     else
       #  aqui va cuando no encuentra nada con ese emil
+      redirect_to "/login"
     end
 
   end
