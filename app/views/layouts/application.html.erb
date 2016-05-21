@@ -4,14 +4,28 @@
   <title>Yoadoptocr</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header>
 
+  <header>
     <div class="log">
       <div class="cont">
-        <a href="#">Iniciar sesión o registrarse</a>
+        <div class="log_btn">
+          <a onclick="switchLogin()" href="#">Iniciar sesión o registrarse</a>
+          <div class="log_btn_pop shadow">
+            <%= form_tag("/validate", method: "post") do %>
+            <input type="email" placeholder="email" name="email" value="">
+            <input type="password" placeholder="password" name="password" value="">
+            <div class="button-container">
+              <button><span>Entrar</span></button>
+            </div>
+            <% end %>
+            <a href="users/new">Registrate</a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="bar">
@@ -34,6 +48,7 @@
     <%= image_tag "s2.jpg" %>
     <% end %>
   </header>
+
   <div class="cont">
     <%= yield %>
   </div>

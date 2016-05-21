@@ -19,3 +19,8 @@
 $(window).load(function() {
   $('#slider').nivoSlider();
 });
+
+function switchLogin(){
+  var login = jQuery('.log_btn_pop');
+  login.fadeToggle( 500, "linear" );
+}

@@ -1,13 +1,21 @@
 @import "nivo";
+a, a:hover, .card_info i, .card_info i:hover {
+  transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
 html, body {
   margin: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 body {
   background: #f1f1f1;
 }
-a:hover {
+a:hover, button:hover {
   background: inherit;
   color: inherit;
+  cursor: pointer;
 }
 .cont {
   width: 100%;
@@ -35,6 +43,63 @@ header {
   float: right;
   color: #fff;
 }
+.log_btn {
+  float: right;
+  position: relative;
+}
+.shadow {
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+.log_btn_pop {
+  display: none;
+  z-index: 666;
+  position: absolute;
+  top: 30px;
+  left: -65px;
+  width: 220px;
+  height: 140px;
+  //background: #191919;
+  background: #fff;
+  padding: 15px;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.log_btn_pop a {
+  color: #191919;
+  float: left;
+  margin-top: 15px;
+}
+.log_btn_pop input {
+  margin: 5px 0;
+  float: left;
+  padding: 10px;
+  border: 1px solid #d1d1d1;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  width: 100%;
+  max-width: 198px;
+  outline: none;
+}
+.log_btn_pop input:focus {
+  border-bottom: 2px solid #F05752;
+}
+.log_btn_pop button {
+  border: 0;
+  padding: 10px;
+  background: #F05752;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 10px;
+  float: right;
+}
 #logo {
   float: left;
 }
@@ -58,10 +123,36 @@ header nav ul li a {
   text-decoration: none;
 }
 .card {
-  width: 33%;
-  height: 150px;
+  width: 18%;
+  margin: 2%;
+  height: auto;;
   background: #fff;
+  float: left;
+}
+.card a {
+  text-decoration: none;
+}
+.card_img {
+  overflow: hidden;
+}
+.card img {
+  width: auto;
+  height: auto;
+  background: #fff;
+  left: 50%;
+  margin-left: -150px;
+  position: relative;
 }
 .card_info {
-
+  padding: 20px 10px;
+}
+.card_info i {
+  float: right;
+  padding: 0 5px 0 0;
+}
+.card_info i:hover {
+  color: #F05752;
+  -ms-transform: scale(1.5,1.5);
+  -webkit-transform: scale(1.5,1.5);
+  transform: scale(1.5,1.5);
 }
