@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+//= require nivo
+$(window).load(function() {
+  $('#slider').nivoSlider();
+});

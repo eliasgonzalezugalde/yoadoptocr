@@ -7,8 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
 
-<%= yield %>
+    <div class="log">
+      <div class="cont">
+        <a href="#">Iniciar sesión o registrarse</a>
+      </div>
+    </div>
+    <div class="bar">
+      <div class="cont">
+        <div id="logo"><img src="<%= image_path("logo.png")%>"></div>
+        <nav>
+          <ul>
+            <li><%= link_to "Inicio", root_path %></li>
+            <li><%= link_to "Perros", root_path %></li>
+            <li><%= link_to "Gatos", root_path %></li>
+            <li><%= link_to "Otros", root_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
+    <%= nivo_slider id: "slider" do %>
+    <!-- <%= image_tag "s1.jpg", title: "A very nice photo!" %> -->
+    <%= image_tag "s1.jpg" %>
+    <%= image_tag "s2.jpg" %>
+    <% end %>
+  </header>
+  <div class="cont">
+    <%= yield %>
+  </div>
 </body>
 </html>
