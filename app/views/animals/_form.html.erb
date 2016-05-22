@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= label_tag :breed %><br>
-    <%= text_field_tag :breed %>
+    <%= select_tag  :breed, options_for_select([["Dog", "Dog"], ["Cat", "Cat"]]) %>
   </div>
   <div class="field">
     <%= label_tag :description %><br>

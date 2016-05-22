@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :validate_user, only: [:login, :validate]
+  # skip_before_action :validate_user, only: [:login, :validate]
 
   # GET /users
   # GET /users.json
   def index
     @users = User.all
+    @nombre = User.find_by(id: session[:user_id])
   end
 
   # GET /users/1
@@ -62,26 +63,20 @@ class UsersController < ApplicationController
     end
   end
 
-  def login
-    if defined?(session[:logueado]) and session[:logueado]
-  redirect_to "/animals"
-    end
-  end
-
   def validate
     if    user = User.find_by(email: params[:email])
       if user && user.authenticate(params[:password])
 
         session[:logueado] = true
         session[:user_id] = user.id
-        redirect_to "/animals"
+        redirect_to root_path
       else
         #  aqui va si falla la autenticacion
-        redirect_to "/login"
+        redirect_to root_path
       end
     else
       #  aqui va cuando no encuentra nada con ese emil
-      redirect_to "/login"
+      redirect_to root_path
     end
 
   end
@@ -90,6 +85,8 @@ class UsersController < ApplicationController
     session[:logueado] = false
     session[:name] = nil
     session[:email] = nil
+    redirect_to root_path
+
   end
 
   private

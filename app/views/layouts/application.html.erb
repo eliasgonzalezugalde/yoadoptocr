@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Yoadoptocr</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <%= csrf_meta_tags %>
+    <title>Yoadoptocr</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <header>
-    <div class="log">
-      <div class="cont">
-        <div class="log_btn">
-          <a onclick="switchLogin()" href="#">Iniciar sesión o registrarse</a>
-          <div class="log_btn_pop shadow">
-            <%= form_tag("/validate", method: "post") do %>
-            <input type="email" placeholder="email" name="email" value="">
-            <input type="password" placeholder="password" name="password" value="">
-            <div class="button-container">
-              <button><span>Entrar</span></button>
+    <header>
+        <% if !(defined?(session[:logueado]) and session[:logueado]) %>
+        <div class="log">
+            <div class="cont">
+                <div class="log_btn">
+                    <a onclick="switchLogin()" href="#">Iniciar sesión o registrarse</a>
+                    <div class="log_btn_pop shadow">
+                        <%= form_tag("/validate", method: "post") do %>
+                        <input type="email" placeholder="email" name="email" value="">
+                        <input type="password" placeholder="password" name="password" value="">
+                        <div class="button-container">
+                            <button><span>Entrar</span></button>
+                        </div>
+                        <% end %>
+                        <!-- <a href="users/new">Registrate</a> -->
+                        <%= link_to("Registrate", "/users/new", method: :get) %>
+                    </div>
+                </div>
             </div>
-            <% end %>
-            <a href="users/new">Registrate</a>
-          </div>
         </div>
-      </div>
-    </div>
-    <div class="bar">
-      <div class="cont">
-        <div id="logo"><img src="<%= image_path("logo.png")%>"></div>
-        <nav>
-          <ul>
-            <li><%= link_to "Inicio", root_path %></li>
-            <li><%= link_to "Perros", root_path %></li>
-            <li><%= link_to "Gatos", root_path %></li>
-            <li><%= link_to "Otros", root_path %></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+        <% else %>
+        <td><%= link_to("Logout", "/logout", method: :delete) %></td>
+        <% end %>
+        <div class="bar">
+            <div class="cont">
+                <div id="logo"><img src="<%= image_path("logo.png")%>"></div>
+                <nav>
+                    <ul>
+                        <li><%= link_to "Inicio", root_path %></li>
+                        <li><%= link_to "Perros", "/dogs" %></li>
+                        <li><%= link_to "Gatos", "/cats" %></li>
+                        <li><%= link_to "Otros", root_path %></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <%= nivo_slider id: "slider" do %>
+        <!-- <%= image_tag "s1.jpg", title: "A very nice photo!" %> -->
+        <%= image_tag "s1.jpg" %>
+        <%= image_tag "s2.jpg" %>
+        <% end %>
+    </header>
 
-    <%= nivo_slider id: "slider" do %>
-    <!-- <%= image_tag "s1.jpg", title: "A very nice photo!" %> -->
-    <%= image_tag "s1.jpg" %>
-    <%= image_tag "s2.jpg" %>
-    <% end %>
-  </header>
-
-  <div class="cont">
-    <%= yield %>
-  </div>
+    <div class="cont">
+        <%= yield %>
+    </div>
 </body>
 </html>

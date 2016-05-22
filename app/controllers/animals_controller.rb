@@ -6,6 +6,12 @@ class AnimalsController < ApplicationController
   def index
     @animals = Animal.all
   end
+  def dogs
+    @animals = Animal.where(breed: 'Dog')
+  end
+  def cats
+    @animals = Animal.where(breed: 'Cat') 
+  end
 
   # GET /animals/1
   # GET /animals/1.json
@@ -62,13 +68,13 @@ class AnimalsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_animal
-      @animal = Animal.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_animal
+    @animal = Animal.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def animal_params
-      params.permit(:title, :breed, :description, :photos, :location_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def animal_params
+    params.permit(:title, :breed, :description, :photos, :location_id)
+  end
 end
