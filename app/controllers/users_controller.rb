@@ -83,8 +83,7 @@ class UsersController < ApplicationController
 
   def logout
     session[:logueado] = false
-    session[:name] = nil
-    session[:email] = nil
+    session[:user_id] = nil
     redirect_to root_path
 
   end
