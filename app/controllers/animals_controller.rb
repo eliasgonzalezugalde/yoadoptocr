@@ -10,7 +10,7 @@ class AnimalsController < ApplicationController
     @animals = Animal.where(breed: 'Dog')
   end
   def cats
-    @animals = Animal.where(breed: 'Cat') 
+    @animals = Animal.where(breed: 'Cat')
   end
 
   # GET /animals/1
@@ -34,7 +34,7 @@ class AnimalsController < ApplicationController
 
     respond_to do |format|
       if @animal.save
-        format.html { redirect_to @animal, notice: 'Animal was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Animal was successfully created.' }
         format.json { render :show, status: :created, location: @animal }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class AnimalsController < ApplicationController
   def update
     respond_to do |format|
       if @animal.update(animal_params)
-        format.html { redirect_to @animal, notice: 'Animal was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Animal was successfully updated.' }
         format.json { render :show, status: :ok, location: @animal }
       else
         format.html { render :edit }

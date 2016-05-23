@@ -1,29 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @animal.title %>
+    <strong>Nombre:</strong>
+    <%= @animal.title %>
 </p>
 
 <p>
-  <strong>Breed:</strong>
-  <%= @animal.breed %>
+    <strong>Historia o descripción:</strong>
+    <%= @animal.description %>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @animal.description %>
+    <%= image_tag @animal.photos.url(:mini) %>
 </p>
 
 <p>
-  <strong>Photo:</strong>
-  <%= image_tag @animal.photos.url(:mini) %>
+    <strong>Provincia:</strong>
+    <%= @animal.location.name %>
 </p>
 
-<p>
-  <strong>Locations:</strong>
-  <%= @animal.location.name %>
-</p>
-
-<%= link_to 'Edit', edit_animal_path(@animal) %> |
-<%= link_to 'Back', animals_path %>
+<%= link_to 'Editar', edit_animal_path(@animal) %> |
+<%= link_to 'Atras', animals_path %>

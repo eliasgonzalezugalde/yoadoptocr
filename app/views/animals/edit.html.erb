@@ -1,6 +1,9 @@
+<div class="cont_form">
 <h1>Editing Animal</h1>
 
-<%= render 'form' %>
+<%= render 'form_edit' %>
 
 <%= link_to 'Show', @animal %> |
 <%= link_to 'Back', animals_path %>
+<%= link_to 'Destroy', @animal, method: :delete, data: { confirm: 'En realidad deseas eliminarlo?' } %>
+</div>

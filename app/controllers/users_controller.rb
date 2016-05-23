@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to root_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -66,9 +66,9 @@ class UsersController < ApplicationController
   def validate
     if    user = User.find_by(email: params[:email])
       if user && user.authenticate(params[:password])
-
         session[:logueado] = true
-        session[:user_id] = user.id
+        session[:user_name] = user.name
+        session[:user_email] = user.email
         redirect_to root_path
       else
         #  aqui va si falla la autenticacion
@@ -85,7 +85,6 @@ class UsersController < ApplicationController
     session[:logueado] = false
     session[:user_id] = nil
     redirect_to root_path
-
   end
 
   private

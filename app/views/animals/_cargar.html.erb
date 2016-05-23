@@ -1,15 +1,17 @@
-<h1>Ellos están listos para tener un nuevo hogar.</h1>
-<% @animals.each do |animal| %>
-<div class="card">
-    <%= link_to animal do %>
-    <div class="card_img">
-        <%= image_tag animal.photos.url(:mini) %>
+<div class="index">
+    <h1>Ellos están listos para tener un nuevo hogar.</h1>
+    <% @animals.each do |animal| %>
+    <div class="card shadow">
+        <%= link_to animal do %>
+        <div class="card_img">
+            <%= image_tag animal.photos.url(:mini) %>
+        </div>
+        <div class="card_info">
+            <%= animal.title %>
+            <% end %>
+            <i class="material-icons">favorite</i>
+        </div>
     </div>
-    <div class="card_info">
-        <%= animal.title %>
-        <% end %>
-        <i class="material-icons">favorite</i>
-    </div>
+    <% end %>
 </div>
-<% end %>
 <!-- <%= link_to 'New Animal', new_animal_path %> -->

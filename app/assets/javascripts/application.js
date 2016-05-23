@@ -24,3 +24,7 @@ function switchLogin(){
   var login = jQuery('.log_btn_pop');
   login.fadeToggle( 500, "linear" );
 }
+function switchSub(){
+  var login = jQuery('.sub_menu');
+  login.fadeToggle( 500, "linear" );
+}

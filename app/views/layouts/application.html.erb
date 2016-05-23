@@ -29,18 +29,27 @@
                 </div>
             </div>
         </div>
-        <% else %>
-        <td><%= link_to("Logout", "/logout", method: :delete) %></td>
         <% end %>
-        <div class="bar">
+        <div class="bar shadow">
             <div class="cont">
-                <div id="logo"><img src="<%= image_path("logo.png")%>"></div>
+                <div id="logo"><a href="<%= root_path %>"><img src="<%= image_path("logo.png")%>"></a></div>
                 <nav>
                     <ul>
                         <li><%= link_to "Inicio", root_path %></li>
                         <li><%= link_to "Perros", "/dogs" %></li>
                         <li><%= link_to "Gatos", "/cats" %></li>
-                        <li><%= link_to "Otros", root_path %></li>
+                        <li><%= link_to "Nueva adopción", "/animals/new" %></li>
+                        <% if (defined?(session[:logueado]) and session[:logueado]) %>
+
+                        <li>
+                            <a onclick="switchSub()" href="#"><%= @name %></a>
+                            <ul class="sub_menu shadow">
+                                <li><a href="">Mis animales</a></li>
+                                <li><%= link_to("Logout", "/logout", method: :delete) %></li>
+                            </ul>
+
+                        </li>
+                        <% end %>
                     </ul>
                 </nav>
             </div>

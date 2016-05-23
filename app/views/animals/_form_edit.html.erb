@@ -12,7 +12,7 @@
 
 <div class="field">
     <%= label_tag "Nombre del animal" %><br>
-    <%= text_field_tag :title %>
+    <%= text_field_tag :title, "#{@animal.title}" %>
 </div>
 <div class="field">
     <%= label_tag "El animal es un" %><br>
@@ -20,7 +20,7 @@
 </div>
 <div class="field">
     <%= label_tag "Historia o descripción" %><br>
-    <%= text_area_tag :description %>
+    <%= text_area_tag :description, "#{@animal.description}" %>
 </div>
 <div class="field">
     <%= label_tag "Foto" %><br>
